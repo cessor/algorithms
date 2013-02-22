@@ -8,9 +8,9 @@ class QuickUnion(object):
 		return self.root(a) == self.root(b)
 
 	def root(self, element):
-		while(self.nodes[element] != element):
-			element = self.nodes[element]
-		return element
+		if self.nodes[element] == element:
+			return element
+		return self.root(self.nodes[element])
 
 	def union(self, a, b):
 		u = self.root(a)
@@ -39,8 +39,6 @@ def test_two_elements_should_be_connected():
 	u = QuickUnion(10)
 	u.union(0,1)
 	assert_true(u.connected(0,1))
-
-
 
 def test_two_elements_elements_should_be_transitively_connected():
 	"""A deep tree:
