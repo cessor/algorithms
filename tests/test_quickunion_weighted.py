@@ -1,38 +1,50 @@
 from nose.tools import *
-from quickunion import QuickUnion
+from quickunionweighted import QuickUnionWeighted
+
+Union = QuickUnionWeighted # Rename, motherfucker
 
 def test_union():
-	u = QuickUnion(10)
+	u = Union(10)
 	u.union(0,1)
 	assert_equal(u.nodes[1], 0)
 
 def test_nodes_are_connected_to_themselves():
-	u = QuickUnion(10)
+	u = Union(10)
 	assert_true(u.connected(0, 0))
 
 def test_nodes_are_their_own_root():
-	u = QuickUnion(10)
+	u = Union(10)
 	assert_equal(u.root(0), 0)
 
 def test_union():
-	u = QuickUnion(10)
+	u = Union(10)
 	u.union(0,1)
 	assert_equal(u.root(1), 0)
 
 def test_two_elements_should_not_be_connected():
-	u = QuickUnion(10)
+	u = Union(10)
 	assert_false(u.connected(0,1))
 
 def test_two_elements_should_be_connected():
-	u = QuickUnion(10)
+	u = Union(10)
 	u.union(0,1)
 	assert_true(u.connected(0,1))
 
 def test_the_connection_is_symmetric():
-	u = QuickUnion(10)
+	u = Union(10)
 	u.union(0,1)
 	assert_true(u.connected(0,1))
 	assert_true(u.connected(1,0))
+
+def test_unconnected_elements_are_trees_of_size_1():
+	u = Union(10)
+	assert_equal(u.size(0), 1)
+
+def test_unconnected_elements_are_trees_of_size_1():
+	u = Union(10)
+	u.union()
+	assert_equal(u.size(0), 1)
+
 
 def test_elements_should_be_transitively_connected():
 	"""A deep tree:
@@ -43,7 +55,7 @@ def test_elements_should_be_transitively_connected():
 	   / \   / \
 	  1   3 5   6
 	"""
-	u = QuickUnion(10)
+	u = Union(10)
 	
 	u.union(2,1)
 	u.union(2,3)
