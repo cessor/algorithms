@@ -117,13 +117,12 @@ def test_elements_should_be_transitively_connected():
 
 
 def test_example_from_the_book():
-	"""A deep tree:
-
-	  4 	    7 
-	 / \       / \
-	0   2     8   9
-	   / \   / \
-	  1   3 5   6
+	"""
+		6___ 
+	   /|\  \
+	  4 0 5  2
+     /|\    / \
+	3 8 9  1   7
 	"""
 	u = Union(10)
 	u.union(4,3)
@@ -139,4 +138,3 @@ def test_example_from_the_book():
 	control = [6,2,6,4,6,6,6,2,4,4]
 	for i,v in enumerate(control):
 		assert_equal(v, u.nodes[i])
-
