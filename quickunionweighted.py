@@ -12,9 +12,17 @@ class QuickUnionWeighted(object):
 		return self.root(self.nodes[element])
 
 	def union(self, a, b):
-		u = self.root(a)
-		v = self.root(b)
-		self.nodes[v] = u
+		left = self.root(a)
+		right = self.root(b)
+		
+		if self.sizes[left] < self.sizes[right]:
+			child,parent = left,right
+		else:
+			child,parent = right,left
 
-	def size(self, a):
-		return self.sizes[a]
+		self.make(child, point_to = parent)
+
+	def make(self, child, point_to): 
+		parent = point_to
+		self.sizes[parent] += self.sizes[child]
+		self.nodes[child] = parent
