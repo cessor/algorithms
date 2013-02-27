@@ -1,5 +1,5 @@
 class ArrayStack(object):
-	def __init__(self, capacity):
+	def __init__(self):
 		self.items = []
 		self.N = 0
 
