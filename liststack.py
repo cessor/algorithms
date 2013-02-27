@@ -6,6 +6,7 @@ class ListStack(object):
 		self.head = (item, self.head)
 
 	def pop(self):
+		if self.is_empty(): return None
 		value,pointer = self.head
 		self.head = pointer
 		return value

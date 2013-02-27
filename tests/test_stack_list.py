@@ -12,6 +12,10 @@ def test_an_element_can_be_pushed_on_the_stack():
 	s.push(1)
 	assert_false(s.is_empty())
 
+def test_underflow_cant_pop_empty_stack():
+	s = Stack()
+	assert_equal(s.pop(), None)
+
 def test_two_elements_can_be_pushed_on_the_stack():
 	s = Stack()
 	s.push(1)
