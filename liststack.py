@@ -1,4 +1,4 @@
-class Stack(object):
+class ListStack(object):
 	def __init__(self):
 		self.head = None
 

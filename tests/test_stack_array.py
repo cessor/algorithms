@@ -1,7 +1,7 @@
 from nose.tools import *
-from liststack import ListStack
+from stack import ArrayStack
 
-Stack = ListStack
+Stack = ArrayStack
 
 def test_new_stack_is_empty():
 	s = Stack()
