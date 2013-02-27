@@ -40,5 +40,3 @@ def test_lines_from_course():
 		else:
 			s.push(word)
 	assert_equal(' '.join(buffer), 'to be not that or be')
-	# Debug, use nosetests --nocapture to print...
-	print s.head

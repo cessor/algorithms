@@ -65,8 +65,6 @@ def test_example_from_the_book():
 	u.union(6,1)
 	u.union(7,3)
 
-	print u.nodes
-
-#	control = [6,2,6,4,6,6,6,2,4,4]
-#	for i,v in enumerate(control):
-#		assert_equal(v, u.nodes[i])
+	control = [6,2,6,4,6,6,6,6,4,4]
+	for i,v in enumerate(control):
+		assert_equal(v, u.nodes[i])
