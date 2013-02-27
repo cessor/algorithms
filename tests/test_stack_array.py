@@ -1,5 +1,5 @@
 from nose.tools import *
-from stack import ArrayStack
+from arraystack import ArrayStack
 
 Stack = ArrayStack
 
