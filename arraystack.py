@@ -1,12 +1,17 @@
 class ArrayStack(object):
 	def __init__(self, capacity):
-		pass
+		self.items = []
+		self.N = 0
 
 	def push(self, item):
-		pass
+		self.items.append(item)
+		self.N = self.N + 1
 
 	def pop(self):
-		return None
+		self.N = self.N - 1
+		item = self.items[self.N]
+		del self.items[self.N]
+		return item
 
 	def is_empty(self):
-		return None
+		return self.N == 0
