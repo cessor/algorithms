@@ -13,13 +13,13 @@ def test_an_element_can_be_pushed_on_the_stack():
 	s.push(1)
 	assert_false(s.is_empty())
 
-def _test_an_element_can_be_popped_from_the_stack():
+def test_an_element_can_be_popped_from_the_stack():
 	s = Stack()
 	s.push(5)
 	x = s.pop()
 	assert_equal(x, 5)
 
-def _test_two_elements_can_be_pushed_on_the_stack():
+def test_two_elements_can_be_pushed_on_the_stack():
 	s = Stack()
 	s.push(1)
 	s.push(2)
@@ -45,7 +45,27 @@ def test_a_full_stack_should_resize():
 	s.push(5)
 	assert_equal(s.capacity, 8)
 
-def _test_lines_from_course():
+def test_a_draining_stack_should_shrink():
+	print 
+	print "Grow------------------------------------"
+	s = Stack()
+	s.push(1)
+	s.push(2)
+	s.push(3)
+	s.push(4)
+	s.push(5)
+	print 
+	print "Shrink------------------------------------"
+	assert_equal(s.capacity, 8)
+	assert_equal(s.pop(), 5)
+	assert_equal(s.pop(), 4)
+	assert_equal(s.pop(), 3)
+	assert_equal(s.pop(), 2)
+	assert_equal(s.capacity, 4)
+	print 
+	print "Done------------------------------------"
+
+def test_lines_from_course():
 	s = Stack()	
 	buffer = []
 	dsl = 'to be or not to - be - - that - - - is'.split()
