@@ -27,3 +27,4 @@ def test_deque_many_elements():
 	assert_equal(q.deque(), 2)
 	assert_equal(q.deque(), 3)
 	assert_equal(q.deque(), 4)	
+
