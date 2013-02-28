@@ -10,25 +10,19 @@ class ArrayStackFixedSize(object):
 		self.N += 1
 
 	def resize(self, capacity):
-		print 
-		print 'Resize to', capacity
-		print self.items
-		x = [None] * capacity
-		print 'new', x
-		for i,v in enumerate(self.items):
-			x[i] = v
-		print x
-		self.items = x
+		temp = [None] * capacity
+		for index,value in enumerate(self.items):
+			if value == None: continue
+			temp[index] = value
+		self.items = temp
 
 	def pop(self):
 		if self.is_empty(): return None
 		self.N -= 1
 		item = self.items[self.N]
 		self.items[self.N] = None
-		if self.N > 0 and (self.N == self.capacity / 4):
-			self.resize(self.capacity / 2)
-		print 
-		print self.items
+		if self.N >= 0 and self.N == self.capacity // 4:
+			self.resize(self.capacity // 2)
 		return item
 
 	def is_empty(self):
