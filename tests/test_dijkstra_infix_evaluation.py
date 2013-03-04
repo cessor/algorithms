@@ -1,8 +1,9 @@
 from nose.tools import *
 import sys
 from arraystack import ArrayStack
-from dijkstraseval import dijkstrasAlgorithm
+from dijkstra import dijkstra
 
+dijkstrasAlgorithm = dijkstra
 Stack = ArrayStack
 
 def test_addition():
@@ -55,3 +56,8 @@ def test_items_from_course():
 	code = '(1 + (2 + 3) * (4 * 5)))'
 	result = dijkstrasAlgorithm(code)
 	assert_equal(result, 101)
+
+def test_brackets_are_not_necessary():
+	code = ' 1 + 2'
+	result = dijkstrasAlgorithm(code)
+	assert_equal(result, 3)
