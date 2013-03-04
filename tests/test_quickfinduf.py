@@ -1,30 +1,19 @@
 from nose.tools import *
 
-class UnionFind(object):
-	def __init__(self, n):
-		self.items = range(n)
-
-	def connected(self, p, q):
-		return self.items[p] == self.items[q]
-
-	def union(self, p, q): 
-		ppointer,qpointer = self.items[p], self.items[q]
-		for index,pointer in enumerate(self.items):
-			if self.items[index] == ppointer:
-				self.items[index] = qpointer
+from quickfinduf import QuickFindUF
 
 def test_connections_are_reflexive():
-	uf = UnionFind(10)
+	uf = QuickFindUF(10)
 	assert_true(uf.connected(1,1))
 
 def test_connections_are_symmetric():
-	uf = UnionFind(10)
+	uf = QuickFindUF(10)
 	uf.union(0,1)
 	assert_true(uf.connected(0,1))
 	assert_true(uf.connected(1,0))
 
 def test_connections_are_transitive():
-	uf = UnionFind(10)
+	uf = QuickFindUF(10)
 	uf.union(0,1)
 	uf.union(1,2)
 	assert_true(uf.connected(0,2))
@@ -35,7 +24,7 @@ def test_some_more_elements():
     |     |  |  |
 	5--6  7  8  9
 	''' 
-	uf = UnionFind(10)
+	uf = QuickFindUF(10)
 
 	# Connected Component I 
 	uf.union(0,5)
@@ -63,7 +52,7 @@ def test_some_more_elements():
 	assert_true(uf.connected(8,9))
 
 def test_test():
-	u = UnionFind(10)
+	u = QuickFindUF(10)
 	u.union(0, 7)
 	u.union(3, 7)
 	u.union(1, 9)
