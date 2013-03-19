@@ -5,12 +5,14 @@ from selectionsort import selectionSort
 from insertionsort import insertionSort
 from shellsort import shellSort
 from quicksort import quickSort
+from mergesort import mergeSort
 
 algorithms = {
 	'selectionSort': selectionSort,
 	'insertionSort': insertionSort,
 	'shellSort': shellSort,
-	'quickSort': quickSort	
+	'quickSort': quickSort,
+	'mergeSort': mergeSort	
 }
 
 def simulate(algorithm):

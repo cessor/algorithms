@@ -11,6 +11,7 @@ white = pygame.Color(255, 255, 255)
 red = pygame.Color(255, 0, 0)
 
 def start():
+	chaos = shuffle(range(100))
 	Visualize(chaos).visualize(sort)
 
 def exit():
@@ -94,10 +95,8 @@ algorithms = {
 	'insertionSort': insertionSort,
 	'shellSort': shellSort,
 	'quickSort': quickSort,
-	'mergeSort': mergeSort	
+	'mergeSort': mergeSort
 }
-
-chaos = shuffle(range(100))
 
 if __name__ == "__main__":
 	sort = selectionSort
