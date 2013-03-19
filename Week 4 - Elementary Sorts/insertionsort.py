@@ -8,7 +8,7 @@ def insertionSort(data, step=step):
 		for j in reversed(xrange(1,i+1)):
 		 	if data[j] < data[j-1]:
 		 		swap(data, j, j-1)
-		 		step(data)
 		 	else: 
 		 		break
+ 		step(data)
 	return data
