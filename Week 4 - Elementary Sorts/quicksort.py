@@ -33,6 +33,7 @@ def quickSort(data, step=step):
 			if i >= j:
 				break
 			swap(a, i, j)
+			step(a)
 		swap(a, lo, j)
 		step(a)
 		return j

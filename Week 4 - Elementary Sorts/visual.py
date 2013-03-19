@@ -87,7 +87,7 @@ class Visualize(object):
 from selectionsort import selectionSort 
 from insertionsort import insertionSort
 from shellsort import shellSort
-from quicksort import quickSort
+from quicksort import quickSort, fakeqs
 from mergesort import mergeSort
 from bottomupmergesort import bottomUpMergeSort
 
@@ -97,7 +97,8 @@ algorithms = {
 	'shellSort': shellSort,
 	'quickSort': quickSort,
 	'mergeSort': mergeSort,
-	'bottomUpMergeSort': bottomUpMergeSort
+	'bottomUpMergeSort': bottomUpMergeSort,
+	'fakeqs' : fakeqs
 }
 
 if __name__ == "__main__":

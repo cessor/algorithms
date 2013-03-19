@@ -22,7 +22,7 @@ def bottomUpMergeSort(data, step=step):
 			else:
 				a[k] = aux[i]
 				i += 1
-		step(a)
+			step(a)
 
 	N = len(data)
 	

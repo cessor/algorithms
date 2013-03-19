@@ -21,7 +21,7 @@ def mergeSort(data, step=step):
 			else:
 				a[k] = aux[i]
 				i += 1
-		step(a)
+			step(a)
 
 	def sort(a, aux, lo, hi):
 		if hi <= lo: return
