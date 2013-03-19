@@ -3,14 +3,14 @@ import sys
 from copy import deepcopy
 import random
 from pygame.locals import *
+from sort import load_numbers
+from shuffle import shuffle
 
 gray = pygame.Color(100, 100, 100)
 white = pygame.Color(255, 255, 255)
 red = pygame.Color(255, 0, 0)
 
-
 def start():
-	chaos = [49, 41, 19, 33, 16, 13, 32, 7, 22, 0, 39, 48, 27, 15, 36, 31, 30, 28, 34, 47, 1, 3, 5, 35, 10, 29, 23, 2, 25, 20, 44, 43, 24, 17, 38, 21, 11, 6, 26, 42, 12, 9, 8, 45, 40, 37, 18, 4, 14, 46]
 	Visualize(chaos).visualize(sort)
 
 def exit():
@@ -42,12 +42,12 @@ class Bar(object):
 	def __init__(self, height):
 		self.height = height
 
-	def draw(self, position_x, dimensions, surface):
+	def draw(self, position_x, dimensions, surface, color = gray):
 		x = position_x * dimensions.space_for_each_element + dimensions.padding
 		y = (self.height / float(dimensions.max)) * (dimensions.height - 2 * dimensions.padding)
 		bottom = (x, dimensions.height - dimensions.padding)
 		top = (x, dimensions.height - dimensions.padding - y) 
-		pygame.draw.line(surface, gray, bottom, top, dimensions.bar_width)
+		pygame.draw.line(surface, color, bottom, top, dimensions.bar_width)
 
 class Visualize(object):
 	def __init__(self, array):
@@ -71,7 +71,7 @@ class Visualize(object):
 			handleEvents()
 
 	def draw(self, array): 
-		self.surface.fill(white)	
+		self.surface.fill(white)
 		self.drawBars(array)
 		pygame.display.flip()
 		self.clock.tick(20)
@@ -79,11 +79,30 @@ class Visualize(object):
 	def drawBars(self, array):
 		for position_x,size in enumerate(array):
 			handleEvents()
-			bar = Bar(size)
+			bar = Bar(int(size))
 			bar.draw(position_x, self.dimensions, self.surface)
 
-#from selectionsort import selectionSort as sort
-from insertionsort import insertionSort as sort
+
+from selectionsort import selectionSort 
+from insertionsort import insertionSort
+from shellsort import shellSort
+from quicksort import quickSort
+
+algorithms = {
+	'selectionSort': selectionSort,
+	'insertionSort': insertionSort,
+	'shellSort': shellSort,
+	'quickSort': quickSort	
+}
+
+chaos = shuffle(range(100))
 
 if __name__ == "__main__":
+	sort = selectionSort
+	if len(sys.argv) == 2:
+		param = sys.argv[1]
+		sort = algorithms[[key for key in algorithms.keys() if param.lower() in key.lower()][0]]
+	else: 
+		print 'Algorithms: ', algorithms.keys()
+		exit()
 	start()

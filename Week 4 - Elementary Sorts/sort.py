@@ -8,5 +8,8 @@ def step(array):
 def printstep(array):
 	print array
 
-def cursor(i,j):
-	pass
+def load_numbers(filename):
+	content = ''
+	with open(filename, 'r') as f:
+		content = f.read()
+		return content.split(',')

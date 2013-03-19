@@ -1,10 +1,7 @@
-from sort import step,swap
+from sort import *
 from copy import deepcopy
 
-def printf(d):
-	print d
-
-def insertionSort(data, step=printf):
+def insertionSort(data, step=step):
 	data = deepcopy(data)
 	length = len(data)
 	for i in xrange(length):
