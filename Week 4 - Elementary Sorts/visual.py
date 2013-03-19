@@ -9,25 +9,25 @@ white = pygame.Color(255, 255, 255)
 red = pygame.Color(255, 0, 0)
 
 
-def swap(array, left, right):
-	array[left],array[right] = array[right],array[left] 
+def start():
+	chaos = [49, 41, 19, 33, 16, 13, 32, 7, 22, 0, 39, 48, 27, 15, 36, 31, 30, 28, 34, 47, 1, 3, 5, 35, 10, 29, 23, 2, 25, 20, 44, 43, 24, 17, 38, 21, 11, 6, 26, 42, 12, 9, 8, 45, 40, 37, 18, 4, 14, 46]
+	Visualize(chaos).visualize(sort)
 
-def selectionSort(data, step = lambda data: data):
-	data = deepcopy(data)
-	for i in range(len(data)):
-		min = i
-		for j in range(i+1, len(data)):
-			if data[j] < data[min]:
-				min = j
-		swap(data, i, min)
-		step(data)
-	return data
+def exit():
+	pygame.quit()
+	sys.exit()
+
+actions = { 
+	K_F5 : start,
+	K_q  : exit
+}
 
 def handleEvents():
 	for event in pygame.event.get():
 			if event.type == QUIT:
-				pygame.quit()
-				sys.exit()
+				exit()
+			if event.type == KEYDOWN:
+				actions[event.key]()
 
 class Dimensions(object):
 	def __init__(self, array):
@@ -65,30 +65,25 @@ class Visualize(object):
 		self.surface = pygame.display.set_mode((dimensions.width, dimensions.height), HWSURFACE | DOUBLEBUF)
 		self.surface.fill(white)
 
-	def visualize(self):
-		selectionSort(chaos, self.draw)
+	def visualize(self, sort):
+		sort(self.array, self.draw)
 		while True:
 			handleEvents()
 
 	def draw(self, array): 
-		self.surface.fill(white)
+		self.surface.fill(white)	
+		self.drawBars(array)
+		pygame.display.flip()
+		self.clock.tick(20)
+
+	def drawBars(self, array):
 		for position_x,size in enumerate(array):
 			handleEvents()
 			bar = Bar(size)
 			bar.draw(position_x, self.dimensions, self.surface)
-			pygame.display.flip()
-		self.clock.tick(20)
-		
+
+#from selectionsort import selectionSort as sort
+from insertionsort import insertionSort as sort
+
 if __name__ == "__main__":
-	
-	chaos = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
-	chaos.reverse()
-	Visualize(chaos).visualize()
-
-
-	#x = random.randint(0,width)
-	#y = random.randint(0,height)
-
-	
-	
-	
+	start()

@@ -1,12 +1,10 @@
 import time
 
-
 def load_numbers(filename):
 	content = ''
 	with open(filename, 'r') as f:
 		content = f.read()
 		return content.split(',')
-
 
 from selectionsort import selectionSort as sort
 
