@@ -28,7 +28,7 @@ def handleEvents():
 			if event.type == QUIT:
 				exit()
 			if event.type == KEYDOWN:
-				actions[event.key]()
+				actions.get(event.key, lambda:None)()
 
 class Dimensions(object):
 	def __init__(self, array):
@@ -89,13 +89,15 @@ from insertionsort import insertionSort
 from shellsort import shellSort
 from quicksort import quickSort
 from mergesort import mergeSort
+from bottomupmergesort import bottomUpMergeSort
 
 algorithms = {
 	'selectionSort': selectionSort,
 	'insertionSort': insertionSort,
 	'shellSort': shellSort,
 	'quickSort': quickSort,
-	'mergeSort': mergeSort
+	'mergeSort': mergeSort,
+	'bottomUpMergeSort': bottomUpMergeSort
 }
 
 if __name__ == "__main__":
