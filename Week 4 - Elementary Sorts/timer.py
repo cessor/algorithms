@@ -34,7 +34,7 @@ for name,algorithm in algorithms.items():
 		print '.', 
 		durations.append(simulate(algorithm))
 	print
-	stats[name] = sum(durations) / 25.0;
+	stats[name] = sum(durations) / 25.0
 
 print
 print 'Done. Results: '
